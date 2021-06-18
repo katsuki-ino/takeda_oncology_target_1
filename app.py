@@ -37,7 +37,7 @@ app = dash.Dash(__name__,
 server = app.server
 
 VALID_USERNAME_PASSWORD_PAIRS = {
-    'takedak': 'fronteok2021'
+    'takedam': 'fronteom2021'
 }
 
 auth = dash_auth.BasicAuth(
@@ -60,8 +60,8 @@ cytograph =  cyto.Cytoscape(
                         'animationDuration': 1000
                     },
                     stylesheet=generate_stylesheet(),
-                    style={'width': '70%',
-                            'height': '580px',
+                    style={'width': '100%',
+                            'height': '600px',
                             'background-color':'#fafafa',
                             'border': 'solid thin #cedded',
                             'border-radius': '5px',
@@ -73,27 +73,9 @@ cytograph =  cyto.Cytoscape(
 
 app.layout = html.Div( [
     html.Div([
-            dcc.RadioItems(
-                options=[
-                    {'label': 'Conventional', 'value': 'v1'},
-                    {'label': 'Advanced', 'value': 'v2'},
-                ],
-                value='v1',
-                id='version_selector',
-                labelStyle ={'margin-right':'10px'}
-            ),
-        ], 
-    ),
-    html.Div([
         cytograph,
         # html.P('EdgeScore:, className="lead",', id='edge_score'),
-        html.Div(dbc.Jumbotron([
-            html.H2('Target', id='target'),
-            html.Hr(className="my-2"),
-            html.Div(id='info_sent'),
-         ], style={'height': '580px'}), style={'height': '580px', 'width': '30%'}
-        ),
-    ], style={'display': 'flex'}),
+    ]),
     ], style={'padding': '5px'}
 )
 
